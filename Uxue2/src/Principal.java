@@ -1,5 +1,9 @@
 
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Principal {
@@ -21,7 +25,6 @@ public class Principal {
 		mostrarMenu(nivel);
 
 	}
-
 	private static void mostrarMenu(int nivel) {
 		int opcion = 0;
 		do {
@@ -38,6 +41,8 @@ public class Principal {
 			System.out.println();
 			System.out.print("Introduce opci�n: ");
 			opcion = teclado.nextInt();
+			
+
 			switch (opcion) {
 			case 1:
 				nivel = leerNivelAgua();
@@ -72,13 +77,14 @@ public class Principal {
 			}
 		} while (opcion != 5);
 	}
+		
 
-	static int leerNivelAgua() {
+	public static int leerNivelAgua() {
 		permiso = false;
 		return (int) Math.round(Math.random() * 100);
 	}
 
-	static boolean abrirCompuertas() {
+	public static boolean abrirCompuertas() {
 		if (permiso && compuertasVerificadas) {
 			return true;
 		}else {
@@ -86,14 +92,21 @@ public class Principal {
 		}
 	}
 	
-	static boolean solicitarPermiso(int nivel) {
+	
+	/**
+	 * @author ikaslea
+	 * @param nivel  el parametro int que recibe
+	 * @return  devuelve un booleano 
+	 */
+	
+	public static boolean solicitarPermiso(int nivel) {
 		if (nivel > 50) {
 			return true;
 		}else {
 			return false;
 		}
 	}
-	static boolean verificarCompuertas() {		
+	public static boolean verificarCompuertas() {		
 		return true;
 	}
 
